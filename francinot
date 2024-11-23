@@ -10,4 +10,4 @@ fi
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
 
 # Execute against all the files in <module> with $2 as first argument
-find "$SCRIPT_DIR/$1" -type f -name "*.bash" -exec bash {} "$2" ';'
+find "$SCRIPT_DIR/$1" -type f -exec bash {} "$2" ';'
