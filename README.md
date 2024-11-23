@@ -11,7 +11,7 @@ Aims to be more maintainable and simpler to contribute to, less abstractions, le
 ## installation
 
 ```bash
-git clone https://github.com/jukefr/francinot /to/somehwere/you/want
+git clone https://github.com/jukefr/francinot ~
 
 # then add an alias in your .bashrc or .zshrc if you want
 ```
