@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+# Show executed commands
+#set -x
+
+# Data configuration
+REPOSITORY="https://github.com/xicodomingues/francinette"
+echo "Repository is $REPOSITORY"
+
+# Create a temporary directory
+TMP_DIR=$(mktemp -d)
+echo "Temporary directory in $TMP_DIR"
+
+# Copy the sources
+cp -r "$PWD" "$TMP_DIR"
+
+# Create a directory for the tests
+TMP_DIR_TESTS="$TMP_DIR/libft/tests"
+mkdir -p "$TMP_DIR_TESTS"
+
+# Clone the tests
+git clone "$REPOSITORY" "$TMP_DIR_TESTS"
+
+# Copy the test files into the source files
+cp -r "$TMP_DIR_TESTS"/tests/libft/fsoares/* "$TMP_DIR/libft/"
+rm -rf "$TMP_DIR_TESTS"
+
+# Run the tests
+if [[ "$1" == "m" || "$1" == "mandatory" ]]; then
+  make -C "$TMP_DIR/libft"
+  cd "$TMP_DIR/libft" || exit
+  find "$TMP_DIR/libft" -type f -name "test_*" ! -name 'test_lst*' -exec cc {} my_utils.c list_utils.c utils/malloc_mock.c utils/utils.c -L. -lft -o {}.out ';'
+  find "$TMP_DIR/libft" -type f -name "test_*.out" -exec {} ';'
+  find "$TMP_DIR/libft" -type f -name "test_*.out" -exec rm {} ';'
+fi
+
+if [[ "$1" == "b" || "$1" == "bonus" ]]; then
+  make -C "$TMP_DIR/libft"
+  make -C "$TMP_DIR/libft" bonus
+  cd "$TMP_DIR/libft" || exit
+  find "$TMP_DIR/libft" -type f -name "test_lst*" -exec cc {} my_utils.c list_utils.c utils/malloc_mock.c utils/utils.c -L. -lft -o {}.out ';'
+  find "$TMP_DIR/libft" -type f -name "test_*.out" -exec {} ';'
+  find "$TMP_DIR/libft" -type f -name "test_*.out" -exec rm {} ';'
+fi
+
+# Clean up
+#rm -rf "$TMP_DIR"
