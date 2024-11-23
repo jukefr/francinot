@@ -4,7 +4,7 @@
 #set -x
 
 # Data configuration
-REPOSITORY="https://github.com/Tripouille/libftTester"
+REPOSITORY="https://github.com/jukefr/libftTester"
 echo "Repository is $REPOSITORY"
 
 # Create a temporary directory
