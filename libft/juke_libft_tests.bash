@@ -22,11 +22,11 @@ mkdir -p "$TMP_DIR_TESTS"
 git clone "$REPOSITORY" "$TMP_DIR_TESTS"
 
 # Run the tests
-if [[ "$1" == "m" ]]; then
+if [[ "$1" == "m" || "$1" == "mandatory" ]]; then
   make -C "$TMP_DIR_TESTS"
 fi
 
-if [[ "$1" == "b" ]]; then
+if [[ "$1" == "b" || "$1" == "bonus" ]]; then
   make -C "$TMP_DIR_TESTS" bonus
 fi
 

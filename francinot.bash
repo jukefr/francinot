@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -z "$1" || -z "$2" ]]; then
-    echo "Usage: francinot <module> <m/b>"
+    echo "Usage: francinot <module> <mandatory/bonus>"
     echo "       francinot libft m"
     exit 1
 fi

@@ -7,7 +7,7 @@ Aims to be more maintainable and simpler to contribute to, less abstractions, le
 ## usage
 
 ```bash
-francinot <module> <m/b> # Mandatory or Bonus
+francinot <module> <mandatory/bonus>
 
 francinot libft m
 francinot libft b

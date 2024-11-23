@@ -71,7 +71,7 @@ git clone "$REPOSITORY" "$TMP_DIR_TESTS"
 cp -r "$PWD" "$TMP_DIR"
 
 # Add the so rule to the Makefile
-if [[ "$1" == "m" ]]; then
+if [[ "$1" == "m" || "$1" == "mandatory" ]]; then
     SO_CONTENT="
 so:
 	cc -nostartfiles -fPIC $C_FILES
@@ -79,7 +79,7 @@ so:
     echo "$SO_CONTENT" >> "$TMP_DIR/libft/Makefile"
 fi
 
-if [[ "$1" == "b" ]]; then
+if [[ "$1" == "b" || "$1" == "bonus" ]]; then
     SO_CONTENT="
 so:
 	cc -nostartfiles -fPIC $C_FILES $C_FILES_BONUS
