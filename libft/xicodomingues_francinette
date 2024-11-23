@@ -15,7 +15,7 @@ echo "Temporary directory in $TMP_DIR"
 cp -r "$PWD" "$TMP_DIR"
 
 # Create a directory for the tests
-TMP_DIR_TESTS="$TMP_DIR/libft/tests"
+TMP_DIR_TESTS="$TMP_DIR/tests"
 mkdir -p "$TMP_DIR_TESTS"
 
 # Clone the tests
@@ -23,7 +23,6 @@ git clone "$REPOSITORY" "$TMP_DIR_TESTS"
 
 # Copy the test files into the source files
 cp -r "$TMP_DIR_TESTS"/tests/libft/fsoares/* "$TMP_DIR/libft/"
-rm -rf "$TMP_DIR_TESTS"
 
 # Run the tests
 if [[ "$1" == "m" || "$1" == "mandatory" ]]; then
@@ -44,4 +43,4 @@ if [[ "$1" == "b" || "$1" == "bonus" ]]; then
 fi
 
 # Clean up
-#rm -rf "$TMP_DIR"
+rm -rf "$TMP_DIR"
