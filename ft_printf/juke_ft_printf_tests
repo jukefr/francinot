@@ -4,7 +4,7 @@
 #set -x
 
 # Data configuration
-REPOSITORY="https://github.com/jukefr/libft-war-machine"
+REPOSITORY="https://codeberg.org/juke/ft_printf_tests"
 echo "Repository is $REPOSITORY"
 
 # Create a temporary directory
@@ -15,7 +15,7 @@ echo "Temporary directory in $TMP_DIR"
 cp -r "$PWD" "$TMP_DIR"
 
 # Create a directory for the tests
-TMP_DIR_TESTS="$TMP_DIR/libft/tests"
+TMP_DIR_TESTS="$TMP_DIR/ft_printf/tests"
 mkdir -p "$TMP_DIR_TESTS"
 
 # Clone the tests
@@ -23,13 +23,11 @@ git clone "$REPOSITORY" "$TMP_DIR_TESTS"
 
 # Run the tests
 if [[ "$1" == "m" || "$1" == "mandatory" ]]; then
-  bash "$TMP_DIR_TESTS"/grademe.sh
-  bash "$TMP_DIR_TESTS"/grademe.sh
+  make -C "$TMP_DIR_TESTS"
 fi
 
 if [[ "$1" == "b" || "$1" == "bonus" ]]; then
-  bash "$TMP_DIR_TESTS"/grademe.sh
-  bash "$TMP_DIR_TESTS"/grademe.sh -ob
+  make -C "$TMP_DIR_TESTS" bonus
 fi
 
 # Clean up
