@@ -28,7 +28,7 @@ cp -r "$TMP_DIR_TESTS"/tests/libft/fsoares/* "$TMP_DIR/libft/"
 if [[ "$1" == "m" || "$1" == "mandatory" ]]; then
   make -C "$TMP_DIR/libft"
   cd "$TMP_DIR/libft" || exit
-  find "$TMP_DIR/libft" -type f -name "test_*" ! -name 'test_lst*' -exec cc {} my_utils.c list_utils.c utils/malloc_mock.c utils/utils.c -L. -lft -o {}.out ';'
+  find "$TMP_DIR/libft" -type f -name "test_*" ! -name 'test_lst*' -exec cc {} my_utils.c utils/malloc_mock.c utils/utils.c -L. -lft -o {}.out ';'
   find "$TMP_DIR/libft" -type f -name "test_*.out" -exec {} ';'
   find "$TMP_DIR/libft" -type f -name "test_*.out" -exec rm {} ';'
 fi
